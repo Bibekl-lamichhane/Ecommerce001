@@ -6,6 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
+import Reaction from '../reaction/Reaction';
 export default function ProductCard({product}) {
   const[addProduct,setaddProuct]=useState(0)
 const handelclick=()=>{
@@ -28,7 +29,7 @@ setaddProuct(addProduct+1)
         </Typography>
       </CardContent>
       <CardActions className='flex justify-around'>
-       
+       <Reaction/>
         <Button size="small" variant="outlined" href="#outlined-buttons" onClick={handelclick}>Add to Cart</Button>
          {addProduct}
          <Button  size="large">{product.price}Nrs</Button>

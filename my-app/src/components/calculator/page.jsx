@@ -4,7 +4,8 @@ import React, { useState } from 'react'
 const Calculator = () => {
 const[num,setnum]=useState("0")
 let lastDigit=num.slice(num.length-1,num.length)
-const handelSymbolClick=(val)=>{
+const handelSymbolClick=(val)=>{ 
+try{
 if(val==="AC"){
    setnum("0")
 }
@@ -23,11 +24,21 @@ else if(val==="="){
  else{
     setnum(num+val)
  }
-}
 
+
+}
+catch(err){
+    alert("GIGO"+ err)
+}
+}
 const handelClick=(val)=>{
      if(lastDigit==="0" && val) {
-    setnum(num.slice(0,-1)+val)}else{setnum(num+val)}
+    setnum(num.slice(0,-1)+val)}
+    else if(num.includes(".") && val==="." ){
+        return
+    }
+    else
+        {setnum(num+val)}
     
 }
 

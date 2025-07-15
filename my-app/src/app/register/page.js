@@ -29,9 +29,9 @@ const Page = () => {
       </div>
       <Formik
         initialValues={{
-          email: "bibek@gmail.com",
-          username: "bibek",
-          password: "1234",
+          email: "",
+          username: "",
+          password: "",
         }}
         validationSchema={SignupSchema}
         onSubmit={(values) => {
@@ -48,12 +48,12 @@ const Page = () => {
               <Field
                 as={TextField} name="email" label="Email" type="text" variant="filled" 
                   />
-              {errors.email && touched.email ? <div>{errors.email}</div> : null}
+              {errors.email && touched.email ? <div className="text-red-500 text-sm">{errors.email}</div> : null}
               <Field
                 as={TextField} name="username" label="Username" type="text" variant="filled" 
                />
               {errors.username && touched.username ? (
-                <div>{errors.username}</div>
+                <div className="text-red-500 text-sm">{errors.username}</div>
               ) : null}
               <Field
                 as={TextField}
@@ -63,8 +63,9 @@ const Page = () => {
                
               />
               {errors.password && touched.password ? (
-                <div>{errors.password}</div>
+                <div className="text-red-500 text-sm">{errors.password}</div>
               ) : null}
+              
               <div className="text-sm flex ">
                 <p>Already have and account yet?</p>
                 <Link href="/login">

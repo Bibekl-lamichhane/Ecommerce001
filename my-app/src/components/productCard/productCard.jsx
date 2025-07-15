@@ -3,15 +3,13 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { useState } from 'react';
 import Reaction from '../reaction/Reaction';
-export default function ProductCard({product}) {
-  const[addProduct,setaddProuct]=useState(0)
-const handelclick=()=>{
-setaddProuct(addProduct+1)
-  }
+import Box from '@mui/joy/Box';
+import Button from '@mui/joy/Button';
+import Add from '@mui/icons-material/Add';
+export default function ProductCard({ handelAddtoCartClick,product}) {
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -30,9 +28,8 @@ setaddProuct(addProduct+1)
       </CardContent>
       <CardActions className='flex justify-around'>
        <Reaction/>
-        <Button size="small" variant="outlined" href="#outlined-buttons" onClick={handelclick}>Add to Cart</Button>
-         {addProduct}
-         <Button  size="large">{product.price}Nrs</Button>
+        <Button onClick={()=>handelAddtoCartClick()}>+ Add to Cart</Button>
+         <p className='text-xl text-blue-500'  size="large">{product.price}<span className='text-lg text-blue-500 mx-0.5'>Nrs</span></p>
       </CardActions>
     </Card>
   );

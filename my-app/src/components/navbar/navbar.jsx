@@ -14,9 +14,8 @@ import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import Link from 'next/link';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-export default function NavBar() {
+export default function NavBar({addProduct}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [cartitemNumber, setcartitemNumber] = React.useState(0);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -28,15 +27,19 @@ export default function NavBar() {
     <React.Fragment>
       <div className='flex justify-between mx-6'>
         <div>Rikki-Bikki Logo</div>
-      <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-       <Link href="/">  <Typography sx={{ minWidth: 100 }} className='hover:text-blue-400 hover:cursor-pointer'>Home</Typography></Link>
-      <Link href="/shopnow">  <Typography sx={{ minWidth: 100 }} className='hover:text-blue-400 hover:cursor-pointer'>Shop Now</Typography></Link>
-       <Link href="/contactus">  <Typography sx={{ minWidth: 100 }} className='hover:text-blue-400 hover:cursor-pointer'>Contact Us</Typography></Link>
-       <Link href="/aboutus">  <Typography sx={{ minWidth: 100 }} className='hover:text-blue-400 hover:cursor-pointer'>About Us</Typography></Link></Box>
+      <Box  sx={{    display: {
+      xs: 'none',   // hidden on extra small
+      sm: 'none',   // hidden on small
+      md: 'flex',   // visible on medium and up
+    },alignItems: 'center',textAlign: 'center',alignItems: 'center' }}>
+       <Link href="/">  <Typography sx={{ minWidth: 100,fontSize:20,marginX:2 ,fontWeight:500}} className=' hover:text-blue-400 hover:cursor-pointer '>Home</Typography></Link>
+      <Link href="/shopnow">  <Typography sx={{ minWidth: 100 ,fontSize:20,marginX:2,fontWeight:500}} className=' hover:text-blue-400 hover:cursor-pointer '>Shop Now</Typography></Link>
+       <Link href="/contactus">  <Typography sx={{ minWidth: 100 ,fontSize:20,marginX:2,fontWeight:500}} className=' hover:text-blue-400 hover:cursor-pointer '>Contact Us</Typography></Link>
+       <Link href="/aboutus">  <Typography sx={{ minWidth: 100 ,fontSize:20,marginX:2,fontWeight:500}} className=' hover:text-blue-400 hover:cursor-pointer '>About Us</Typography></Link></Box>
         <div className='flex justify-center items-center  '>
-          <div >
-            <ShoppingCartIcon className='text-blue-400 relative'/>
-            <p className='block bg-amber-500 text-white rounded-full text-sm m-0 p-2  absolute left-11/12 top-2'>{cartitemNumber}</p>
+          <div  className='relative pb-10'>
+            <ShoppingCartIcon className='text-blue-400 absolute right-4' fontSize="large" />
+            <p className='block bg-amber-500 text-white rounded-full text-sm m-0 p-2  absolute right-0.5 bottom-3'>{addProduct}</p>
           </div>
         <Tooltip title="Account settings">
           <IconButton

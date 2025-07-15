@@ -17,7 +17,7 @@ const Reaction = () => {
       setliked(newLike);
       setcurrentReaction("like");
     } else if (newReaction == "love") {
-      if(newReaction=="love" && currentReaction=="love"){
+      if(newReaction==currentReaction){
         setcurrentReaction("like");
         return
       }
@@ -25,7 +25,7 @@ const Reaction = () => {
        
       }
   else if (newReaction == "laugh") {
-    if(newReaction=="laugh" && currentReaction=="laugh"){
+    if(newReaction==currentReaction){
         setcurrentReaction("like");
       }
       else{
@@ -37,18 +37,21 @@ setcurrentReaction("laugh")}
 
   const generateReaction=()=>{
      if (currentReaction == "like") {
-       return( <ThumbUpIcon sx={{ color: like ? blue[500] : grey[500] }} />)
+      
+       return( <ThumbUpIcon onClick={()=>handelSymbolChange("like")}  sx={{ color: like ? blue[500] : grey[500] }} />)
     } 
     else if (currentReaction == "love") {
-      return(  <FavoriteIcon sx={{ color: pink[500] }} />)
+    
+      return(  <FavoriteIcon onClick={()=>handelSymbolChange("love")}
+        sx={{ color: pink[500] }} />)
       }
        else if (currentReaction == "laugh") {
-       return( <SentimentVerySatisfiedIcon sx={{ color: orange[500] }} />)
+       return( <SentimentVerySatisfiedIcon   onClick={()=>handelSymbolChange("laugh")} sx={{ color: orange[500] }} />)
   }
   }
   const ReactionDiv = () => {
     return (
-      <div className="my-2">
+      <div className="my-2 w-26">
         <ThumbUpIcon
           onClick={() => handelSymbolChange("like")}
           sx={{ color:!like?blue[500]:grey[500]}}

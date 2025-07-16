@@ -1,11 +1,12 @@
 'use client'
-import * as React from 'react';
+import React  from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Link from 'next/link';
 import { Button } from '@mui/material'
  import * as Yup from 'yup';
 import { Field, Form, Formik } from 'formik';
+
 const SignupSchema = Yup.object().shape({
    username: Yup.string()
      .min(2, 'Too Short!')
@@ -16,12 +17,14 @@ const SignupSchema = Yup.object().shape({
      .max(50, 'Too Long!')
      .required('Required'),
  });
+ 
 const Page = () => {
   return (
+    
     <div className='flex flex-col items-center justify-center min-h-screenspace-y-4 my-40  border-blue-400 rounded-3xl'>
       <div>
         <p className='text-blue-600 text-3xl font-bold font-serif text-center'>
-          Login Page
+         Login Page
         </p>
       </div>
        <Formik
@@ -49,6 +52,7 @@ const Page = () => {
           label="Username"
           variant="filled"
           name="username"
+         
         />
         <div className='text-sm text-red-400'>{errors.username}</div>
         <Field
@@ -59,6 +63,7 @@ const Page = () => {
           autoComplete="current-password"
           variant="filled"
           name="password"
+          
         />
       <div className='text-sm text-red-400'>{errors.password}</div>
         <div className='text-sm flex '><p>Don't have and account yet?</p><Link href="/register"><p className='mx-2'>Sign up?</p></Link></div>

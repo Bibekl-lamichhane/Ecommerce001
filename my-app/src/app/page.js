@@ -4,6 +4,7 @@ import NavBar from '@/components/navbar/navbar'
 import ProductCard from '@/components/productCard/productCard'
 // pages/index.js
 import { useEffect, useState } from "react";
+
  
 const page = () => {
   const [products, setProducts] = useState([]);
@@ -20,6 +21,7 @@ const page = () => {
     fetchProducts();
   }, []);
   return (<>
+  
     <div><NavBar addProduct={addProduct}/></div>
     <div></div>
     <div><main className="container mx-auto p-8">

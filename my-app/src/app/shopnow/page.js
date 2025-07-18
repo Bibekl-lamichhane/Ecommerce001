@@ -7,7 +7,7 @@ const page = () => {
   return (
     <div>
         <NavBar />
-        <Lottery/>
+        <Calculator/>
     </div>
   )
 }
